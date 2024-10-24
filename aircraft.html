@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Airport Management System</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="aircraft.css">
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/966038093e.js" crossorigin="anonymous"></script>
+
+<!-- Bootstrap Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="image-container">
+    <img src="https://m.media-amazon.com/images/S/pv-target-images/b8cb78b3eaf7ee03d7229ce24e9c1c35d79dd55f6dfe2b7a7f01c9842a72b9be.jpg" alt="Aircraft Image">
+    <img src="https://static.toiimg.com/thumb/msid-80472600,width-400,resizemode-4/80472600.jpg" alt="Aircraft Image">
+  </div>
+  <h2 class="texting">Wide-Body Aircraft:</h2>
+  <div class="content-container">
+    <ul class="bullet-list">
+      <li><h5>Boeing 777: This aircraft comes in different versions, including the 777-200, 777-300, and 777X. It can carry a large number of passengers over long distances.</h5></li>
+      <li><h5>Airbus A330: The A330 is available in various models, such as the A330-200 and A330-300, and is often used for long-haul routes.</h5></li>
+      <li><h5>Boeing 787 Dreamliner: Known for its fuel efficiency and passenger comfort, the Dreamliner is available in the 787-8, 787-9, and 787-10 variants.</h5></li>
+    </ul>
+  </div>
+  <h2 class="texting1">Narrow-Body Aircraft:</h2>
+  <div class="content-container1">
+    <ul class="bullet-list">
+      <li><h5>Boeing 737: The Boeing 737 is one of the most widely used narrow-body aircraft, with several models like the 737-700, 737-800, and 737 MAX series.</h5></li>
+      <li><h5>Airbus A320: The A320 family includes the A318, A319, A320, and A321, all of which are commonly used for short to medium-haul flights.</h5></li>
+    </ul>
+  </div>
+  <div class="image-container1">
+    <img src="https://assets.paramountbusinessjets.com/media/blog/wp-content/uploads/2019/10/private-jet-red-carpet.jpg" alt="Aircraft Image">
+    <img src="https://c.ndtvimg.com/2023-01/f1pka8d8_air-india-boeing-777_625x300_27_January_23.jpg" alt="Aircraft Image">
+  </div>
+  <h2 class="texting2">Business Jets:</h2>
+  <div class="content-container1">
+    <ul class="bullet-list">
+      <li><h5>Gulfstream G650: Known for its long-range capabilities and luxurious interiors.</h5></li>
+      <li><h5>Cessna Citation: A series of business jets designed for various missions, from short hops to long-distance travel.</h5></li>
+      <li><h5>Bombardier Challenger: A popular choice for business aviation, available in various models.</h5></li>
+    </ul>
+  </div>
+  <h1 class="Aircraft-Text">Select the Aircraft Type</h1>
+  <select id="Aircraft-Type" class="boxes">
+      <option value=""></option> <!-- Empty default option -->
+      <option value="Airbus-A330">Airbus-A330</option>
+      <option value="Airbus-A320">Airbus-A320</option>
+      <!-- Add more aircraft types as needed -->
+      <option value="Boeing-777">Boeing-777</option>
+      <option value="Boeing-787">Boeing-787</option>
+      <!-- Add more aircraft types as needed -->
+      <option value="Bombardier">Bombardier</option>
+      <option value="Cessna Citation">Cessna Citation</option>
+      <option value="Gulfstream G650">Gulfstream G650</option>
+      <!-- Add more aircraft types as needed -->
+  </select>
+  <button id="GoButton" class="go-button" onclick="getAirlines()">Go</button>
+
+  <div id="result" class="result">
+    <h3>Airlines and Information:</h3>
+  </div>
+  <script src="aircraft.js" defer></script>
+</body>
+</html>

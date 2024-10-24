@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passenger Details</title>
+  <style>
+        body {
+      font-family: 'Arial', sans-serif;
+      background: url('passengerImg.jpg') center center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      background-color: transparent;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: slideIn 0.5s ease-in-out;
+      margin: 20px; /* Add margin for positioning */
+  position: absolute;
+  top: 100px;
+  left: 30px;
+    }
+
+    input {
+      width: calc(100% - 20px);
+      padding: 15px;
+      margin: 20px 10px;
+      box-sizing: border-box;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #3a476e;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #1f3489;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .passenger-card {
+      background-color: rgba(61, 92, 184, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .passenger-card h2 {
+      margin-bottom: 10px;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="container">
+    <h1 style="align-items: center; color: black;">Passenger Details</h1>
+    <input type="text" id="ticketId" placeholder="Enter the Ticket Id">
+    <button id="Submit">Get Details</button>
+
+    <div id="result">
+      <div class="passenger-card" id="passengerCard">
+        <h2 id="passengerName"></h2>
+        <p id="dob"></p>
+        <p id="flightId"></p>
+        <p id="airlineName"></p>
+        <p id="departure"></p>
+        <p id="destination"></p>
+        <p id="date"></p>
+        <p id="Traveldate"></p>
+        <p id="loyaltyType"></p>
+        <p id="status"></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("Submit").addEventListener("click", function () {
+      const ticketId = document.getElementById("ticketId").value;
+
+      fetch(`/get-ticket-info?ticketId=${ticketId}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Received data: ", data);
+          document.getElementById("passengerName").textContent = `Passenger Name: ${data.Passenger_FirstName}`;
+          document.getElementById("dob").textContent = `Date of Birth: ${data.Date_of_Birth}`;
+document.getElementById("flightId").textContent = `Flight ID: ${data.Flight_ID}`;
+document.getElementById("airlineName").textContent = `Airline Name: ${data.Airline_Name}`;
+document.getElementById("departure").textContent = `Departure: ${data.Departure}`;
+document.getElementById("destination").textContent = `Destination: ${data.Destination}`;
+document.getElementById("date").textContent = `Ticket Date: ${data.Ticket_Date}`;
+document.getElementById("Traveldate").textContent = `Travel Date: ${data.Travel_Date}`;
+document.getElementById("loyaltyType").textContent = `Loyalty Type: ${data.Loyalty_Type}`;
+document.getElementById("status").textContent = `Status: ${data.Status_Type}`;
+
+
+          const resultContainer = document.getElementById('result');
+          resultContainer.style.display = 'block';
+
+          // Animate the employee card
+          const passengerCard = document.getElementById('passengerCard');
+          setTimeout(function() {
+            passengerCard.style.opacity = '1';
+            passengerCard.style.transform = 'translateY(0)';
+          }, 100);
+        })
+        .catch(error => {
+          console.error("Error fetching ticket information:", error);
+          displayErrorMessage();
+        });
+    });
+
+    function displayErrorMessage() {
+      alert("Error fetching ticket information. Please try again.");
+    }
+  </script>
+</body>
+</html>

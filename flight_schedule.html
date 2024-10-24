@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(schedule.jpg);
+            
+        }
+
+        .container {
+            background-color: #f2f2f2; /* Lighter container background */
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Box shadow */
+            padding: 30px;
+            width: 600px; /* Increased width */
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="date"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #eee; /* Lighter date input background */
+            color: #333; /* Dark text color */
+        }
+
+        input[type="submit"] {
+            background-color: #5accf3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #182e88;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #333; /* Dark text color */
+            border: 2px solid #ccc; /* Border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+        }
+
+        th, td {
+            border: 1px solid #ccc; /* Light border color */
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Light table heading background */
+            color: #333; /* Dark text color */
+        }
+
+        tr:hover {
+            background-color: #ddd; /* Lighter background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="dateForm">
+            <label for="inputDate">Select a Date:</label>
+            <input type="date" id="inputDate" name="inputDate" required>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <table id="flightTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Airline Name</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Time</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody id="flightTableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("dateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const selectedDate = document.getElementById("inputDate").value;
+            
+            // Fetch flight details based on the selected date
+            fetch(`/flights?date=${selectedDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById("flightTableBody");
+                    tableBody.innerHTML = ""; // Clear previous table rows
+
+                    // Populate the table with flight data
+                    data.forEach(flight => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${flight.flight_id}</td>
+                            <td>${flight.airline_name}</td>
+                            <td>${flight.departure}</td>
+                            <td>${flight.destination}</td>
+                            <td>${flight.time}</td>
+                            <td>${flight.cost}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+
+                    // Show the table
+                    document.getElementById("flightTable").style.display = "table";
+                })
+                .catch(error => {
+                    console.error('Error fetching flight data:', error);
+                    alert('Error fetching flight data. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>

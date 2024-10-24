@@ -1,0 +1,110 @@
+@keyframes colorChange {
+  0% { color: #0049b7; } /* Start color */
+  25% { color: #51e2f5; } /* Middle color */
+  50% { color: #ff1d58; }
+  75% { color: #faf218; } 
+  100% { color: #fff; }/* End color */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #fff; /* Set background color to white */
+}
+
+nav {
+  background: #000; /* Set background color of the navigation bar to black */
+  display: flex;
+/* Center the navigation items horizontally */
+  padding: 10px; /* Add padding to the navigation bar */
+}
+nav a {
+  position: relative;
+  font-size: 1.1em;
+  color: #fff; /* Set text color to white */
+  text-decoration: none;
+  padding: 6px 15px; /* Adjust padding to bring text closer */
+  margin: 10px 0 5px; /* Adjust margin to bring text closer */
+  transition: 0.5s;
+}
+nav a.air-seva {
+  margin-left: 780px; /* Move the "Airसेवा" link to the extreme right */
+  font-weight: bold; /* Make it bold */
+  animation: colorChange 5s infinite; /* Change text color (adjust as needed) */
+  font-size: 1.5rem;
+}
+
+nav a:hover {
+  color: #0ef;
+}
+
+nav a.air-seva:hover {
+  color: #ff0000; /* Change hover color (adjust as needed) */
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjust the distance of the curve from the text */
+  width: 100%;
+  height: 5px; /* Adjust the height of the curve */
+  background: #0ef; /* Set the curve color */
+  border-radius: 10px 10px 50% 50% ; /* Create a semi-circle for the curve */
+  transform: scaleX(0); /* Initially set the scale to 0 for the curve effect */
+  transform-origin: top;
+  transition: transform 0.5s ease-in-out;
+}
+
+nav a:hover::before {
+  transform: scaleX(1);/* Expand the curve on hover */
+  transform-origin: top;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px); /* Adjust based on your navigation bar height and padding */
+}
+
+/* Existing styles remain unchanged */
+
+nav .flights-dropdown a {
+  margin: 0; /* Add this line to remove the default margin */
+}
+
+nav .flights-dropdown {
+  position: relative;
+  display: flex;
+  padding: 10px;
+}
+
+nav .flights-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+nav .flights-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+nav .flights-dropdown .dropdown-content a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+nav .flights-dropdown .dropdown-content a:hover {
+  background-color: #555;
+}

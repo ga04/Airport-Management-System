@@ -1,0 +1,28 @@
+body {
+    background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Light-blue-wallpaper-hd-quality.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .input-container{
+    margin-top: 100px;
+    margin-left: 50px;
+  }
+  .view-button
+  {
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+
+.link
+{
+    margin-top:200px;
+}
+.employee-details {
+    display: flex;
+  }
+  .employee-details h3 {
+    margin-top: 15px;
+    margin-right: 45px; /* Add some space between labels */
+  }

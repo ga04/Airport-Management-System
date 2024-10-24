@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>New Flight</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="myjs.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Madimi One", sans-serif
+
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 12.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: rgb(26, 26, 27);
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url('Indigo.jpg');
+  }
+  .container {
+    width: 100%;
+    height: 40%;
+    padding: 20px;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 5px 100px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px; /* Add this line to shift the container to the right */
+    border: 2px solid #ccc;
+}
+
+#square {
+    display: flex;
+    min-width: 300px;
+    min-height: 320px;
+    margin-bottom: 60px;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-in;
+    box-shadow: 3px 3px 5px ;
+  }
+  
+
+  .front,
+  .right,
+  .left {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    border-radius: 5px;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    box-shadow: 3px 3px 5px transparent;
+  }
+  
+  .front {
+    transform: translateZ(50px);
+  }
+  .right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+  
+  .left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  .actions button {
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    height: 52px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    
+  }
+  .container h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container form input,
+  .container form button,
+  .container form h5 {
+    margin-bottom: 15px;
+  }
+  .container form input {
+    border: 0;
+    padding: 10px 8px;
+    min-height: 40px;
+    font-size: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .container form button {
+    border: 0;
+    padding: 10px 0;
+    outline: none;
+    min-height: 30px;
+    font-size: 20px;
+    border-radius: 4px;
+    background-color: rgb(130, 185, 247);
+  }
+  
+
+  #frontSide {
+    display: none;
+  }
+  .container .actions {
+    display: flex;
+  }
+  
+  .container .actions button {
+    margin-right: 10px;
+    background-color: rgb(119, 169, 226);
+
+  }
+  
+  @media (min-width: 600px) {
+    .container {
+      width: 500px;
+      padding: 50px 100px;
+      height: 500px;
+      background: transparent;
+      
+    }
+  }
+ 
+  
+    </style>
+</head>
+
+<body>
+    <div class="main" >
+        <div class="container">
+          <div id="square">
+            <div class="front">
+              <h1>Login</h1>
+              <form action="#" method="post">
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <div class="right">
+              <h1>Create a new account</h1>
+              <form action="#" method="post">
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+                <input
+                  required
+                  type="text"
+                  name="fullName"
+                  id="fullName"
+                  placeholder="Full name"
+                />
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                />
+                <button type="submit" >Submit</button>
+              </form>
+            </div>
+            <div class="left">
+              <h1>Add your email to reset password</h1>
+              <form action="#" method="post">
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="leftSide" type="button">Forgot Password</button>
+            <button id="frontSide" type="button">Login</button>
+            <button id="rightSide" type="button">Sign up</button>
+          </div>
+        </div>
+      </div>
+      <script>
+            const square = document.getElementById("square");
+            const frontSide = document.getElementById("frontSide");
+            const rightSide = document.getElementById("rightSide");
+            const leftSide = document.getElementById("leftSide");
+        
+            frontSide.addEventListener("click", () => {
+                frontSide.style.display = "none";
+                rightSide.style.display = "block";
+                leftSide.style.display = "block";
+                square.style.transform = "rotate3d(0, 0, 0, 90deg)";
+                document.title = "Login page";
+            });
+        
+            rightSide.addEventListener("click", () => {
+                rightSide.style.display = "none";
+                frontSide.style.display = "block";
+                leftSide.style.display = "block";
+                square.style.transform = "rotate3d(0, -1, 0, 90deg)";
+                document.title = "Sign up page";
+            });
+        
+            leftSide.addEventListener("click", () => {
+                leftSide.style.display = "none";
+                frontSide.style.display = "block";
+                rightSide.style.display = "none";
+                square.style.transform = "rotate3d(0, 1, 0, 90deg)";
+                document.title = "Forgot password page";
+            });
+        </script>
+            </body>
+</html>

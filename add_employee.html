@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Airport Management System</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/966038093e.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('newEmployee.jpg') center/cover no-repeat;
+    font-weight: bold; /* Set default font weight to bold */
+}
+
+.input-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.newDiv{
+  align-items: center;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+h2{
+  font-weight: bold;
+  color: #000; 
+}
+h3 {
+    font-weight: bold; /* Set font weight to bold for headings */
+    color: #000;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.text {
+    margin-bottom: 20px;
+    font-weight: bold; /* Set font weight to bold for text inside .text */
+}
+
+.boxes {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold; /* Set font weight to bold for input boxes */
+}
+
+.submit2 {
+    background-color: #535454;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold; /* Set font weight to bold for the submit button */
+}
+
+.submit2:hover {
+    background-color: #595a5c;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+  <div class="newDiv"> <h2>Enter details to add a new employee:</h2></div>
+  <div class="input-container">
+
+    <form id="employeeForm" action="/add-employee" method="POST">
+      <div class="text">
+        <h3>Enter the Employee id</h3>
+        <input type="text" id="employeeId" name="employeeId" placeholder="Employee ID" class="boxes">
+
+        <h3>Enter First Name:</h3>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" class="boxes">
+
+        <h3>Enter Last Name:</h3>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="boxes">
+
+        <h3>Enter Airline ID:</h3>
+        <input type="text" id="airlineId" name="airlineId" placeholder="Airline ID" class="boxes">
+
+        <h3>Enter Salary:</h3>
+        <input type="text" id="salary" name="salary" placeholder="Salary" class="boxes">
+
+        <h3>Enter Position:</h3>
+        <input type="text" id="position" name="position" placeholder="Position" class="boxes">
+      </div>
+      <button type="submit" class="submit2">Submit</button>
+    </form>
+  </div>
+  <script src="employee.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlightArrivals</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: auto;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 45vh;
+            object-fit: cover;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 40%;
+            left: 30px;
+            transform: translateY(-50%);
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 15px;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Define the fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .overlay-container p {
+            margin: 0;
+        }
+
+        .text1, .text3 {
+            color: white;
+        }
+
+        /* Toggle switch styles */
+        .toggle-switch {
+            position: absolute;
+            top: 10px;
+            left: 10px; /* Adjusted to the left side */
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-label {
+            margin-right: 10px;
+            color: black; /* Change the color to black */
+            font-size: 2em;
+        }
+
+        .switch-label {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Additional styles for input container */
+        .input-container {
+            position: absolute;
+            top: 140%;
+            left: 30px;
+            transform: translateY(-50%);
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-fields {
+            width: 90%;
+            margin-left: 72%;
+        }
+
+        /* Styling for input fields */
+        input {
+            margin-top: 10px;
+            padding: 12px;
+            width: 100%;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+        }
+
+        /* Additional styles for search input */
+        .search-input{
+            margin-top: 10px;
+            padding: 12px;
+            width: 110%;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        select {
+            margin-top: 10px;
+            padding: 12px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        label[for="airlineDropdown"] {
+            font-size: 2em; /* Adjust the font size as needed */
+        }
+        label[for="selectDate"] {
+            font-size: 2em; /* Adjust the font size as needed */
+        }
+
+        label[for="selectTimeRange"] {
+            font-size: 2em; /* Adjust the font size as needed */
+        }
+
+        label[for="time-dropdown"] {
+            font-size: 2em; /* Adjust the font size as needed */
+            margin-right: 60px;
+        }
+.time-input{
+    width: 110%;
+}
+
+        /* Additional styles for the new container */
+        .additional-container {
+            position: absolute;
+            top: 180%; /* Adjusted top position */
+            left: 30px;
+            transform: translateY(-50%);
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav {
+            background-color: #ccc;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 30px;
+        }
+
+        nav h1 {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        /* Adjust the styles for the display container */
+        .display-container {
+            position: absolute;
+            top: 100vh;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Adjusted to vertically center the content */
+        }
+
+        .display-container .grey-strip {
+            background-color: #ccc;
+            height: 35px;
+            flex-grow: 1; /* Allow the grey strip to grow and take available space */
+        }
+
+        .display-button {
+            margin-top: 30px; /* Added margin from the top */
+        padding: 10px 20px;
+        background-color: #0ad0f3; /* Green background color */
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .display-button:hover {
+        background-color: #424d4f; /* Darker green on hover */
+    }
+
+ .values{
+
+    position: absolute;
+            top: 110vh;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Adjusted to vertically center the content */
+        }
+        .values table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .values td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            /* Add more styles as needed */
+        }
+
+        .departure {
+            text-align: right;
+            /* Add more styles as needed */
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="arrivals.jpg" alt="Flight Arrivals Image">
+    
+    <!--<div class="overlay-container">
+        <p class="text1">PASSENGER ARRIVALS</p>
+        <p class="text2">Keep track of arriving passenger flights</p>
+        <p class="text3">with live updates.</p>
+    </div> -->
+    <!-- Toggle switch for Arrival and Departure -->
+
+    <div class="input-container">
+        <div class="toggle-switch">
+            <span class="toggle-label">Arrivals</span>
+            <label class="switch-label">
+                <input type="checkbox" id="toggleArrivalDeparture" onclick="toggleArrivalDeparture()">
+                <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">Departures</span>
+        </div>
+
+        <!-- Input field for searching airlines -->
+        <div class="input-fields">
+            <label for="airlineDropdown">Select Airline:</label>
+            <select id="airlineName" class="search-input"> <!-- Corrected id to 'airlineName' -->
+                <option value=""></option>
+                <option value="indigo">Indigo</option>
+                <option value="airIndia">Air India</option>
+                <option value="emirates">Emirates</option>
+                <option value="cathayPacific">Cathay Pacific</option>
+                <option value="qatarAirways">Qatar Airways</option>
+                <option value="britishAirways">British Airways</option> <!-- Corrected value to 'britishAirways' -->
+            </select>
+        </div>
+        
+        
+    </div>
+
+    <!-- New container for additional content -->
+    <div class="additional-container">
+        <!-- Date input on the left -->
+        <div class="date-input">
+            <label for="selectDate">Select Date:</label>
+            <input type="date" id="date">
+            <br>
+            <br>
+            <br>
+            <h3>*Latest Information on Flight Departures</h3>  
+        </div>
+
+        <!-- Time range dropdown on the right -->
+        <div class="input-date">
+            <br>
+            <label for="time-dropdown">Select Time:</label>
+            <input type="time" class="time-input" id="time-dropdown" /> <!-- Added id 'time-dropdown' -->
+            <br>
+            <button class="display-button">Display</button>
+        </div> 
+           
+        </div>
+        <div class="display-container">
+            <nav>
+              <h1>Airline</h1>
+              <h1>Aircraft</h1>
+              <h1>Flight Id</h1>
+              <h1>Arrived From:</h1>
+            </nav>
+              </div>
+              <div class="values"></div>   
+    
+    
+              <script>
+                document.querySelector('.display-button').addEventListener('click', async () => {
+                    try {
+                        // Retrieve input values
+                        const airline = document.getElementById('airlineName').value;
+                        const date = document.querySelector('.date-input input').value;
+                        const time = document.getElementById('time-dropdown').value;
+        
+                        // Fetch flight information from the server
+                        const response = await fetch(`/searchDeparture?airline=${airline}&date=${date}&time=${time}`);
+                        const data = await response.json();
+        
+                        // Display flight information on the webpage
+                        const value = document.querySelector('.values');
+                        value.innerHTML = `
+                            <table>
+                                ${data.map(info => `
+                                    <tr>
+                                        <td>${info.name} 
+                            ${info.name.toLowerCase() === 'indigo' ? `<img src="IndigoLogo.jpg" alt="Indigo Logo" style="width: 50px; height: 50px;">` : ''}
+                            ${info.name.toLowerCase() === 'air india' ? `<img src="AirIndiaLogo.jpg" alt="Air India Logo" style="width: 50px; height: 50px;">` : ''}
+                            ${info.name.toLowerCase() === 'emirates' ? `<img src="EmiratesLogo.png" alt="Emirates Logo" style="width: 110px; height: 70px;">` : ''}
+                                        </td>
+                                        <td>${info.aircraft_type}</td>
+                                        <td>${info.flight_id}</td>
+                                        <td class="destination">${info.destination}</td>
+                                       
+                                    </tr>
+                                `).join('')}
+                            </table>
+                        `;
+        
+                    } catch (error) {
+                        console.error('Error fetching and displaying data:', error);
+                    }
+                });
+        
+                // Function to toggle Arrival and Departure text and redirect to FlightDeparture.html
+                function toggleArrivalDeparture() {
+                    var isChecked = document.getElementById('toggleArrivalDeparture').checked;
+        
+                    if (isChecked) {
+                        window.location.href = 'flightArrivals.html';
+                    }
+                }
+            </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Airport Management System</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="ticket.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/966038093e.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="full">
+    <form id="passengerForm" action="/book-ticket" method="POST">
+      <input type="hidden" id="airlineNameInput" name="airlineName">
+<input type="hidden" id="flightIdInput" name="flightId">
+  <div class="input-container">
+    <h1>Enter details to book a ticket</h1>
+    <h2 class="texting">Enter your Passenger Id:</h2>
+    <input type="text" id="PassengerId" name ="PassengerId" placeholder="" class="passengerId-textbox">
+
+    <h2 class="texting">Enter your Name:</h2>
+    <input type="text" id="Name" name="Name" placeholder="" class="name-textbox">
+
+    <h2 class="texting">Enter your DOB:</h2>
+    <input type="date" id="DOB" class="dob-textbox">
+
+    <h2 class="texting">Enter Flight Information</h2>
+    <h2>Enter the departure airport:</h2>
+    <select id="departure" name="departure">
+      <option value=""></option>
+      <option value="New Delhi">New Delhi</option>
+      <option value="Mangalore">Mangalore</option>
+      <option value="Bangkok">Bangkok</option>
+      <option value="England">England</option>
+      <option value="California">California</option>
+    </select><br>
+
+    <h2 class="texting">Enter the destination airport:</h2>
+    <select id="destination" name="destination">
+      <option value=""></option>
+      <option value="New Delhi">New Delhi</option>
+      <option value="Mangalore">Mangalore</option>
+      <option value="Bangkok">Bangkok</option>
+      <option value="England">England</option>
+      <option value="California">California</option>
+    </select><br>
+
+    <h2 class="texting">Enter the date for travel:</h2>
+    <input type="date" id="date" name="date"><br>
+    <button id="fetchButton" class="fetch" type="button">GO</button>
+    <div id="result">
+      <h2 class="texting">Airline Information:</h2>
+      <p id="airlineName" name="airlineName">Airline Name: </p>
+      <p id="flightId" name="flightId">Flight ID: </p>
+      <p id="flightTime">Flight Time: </p>
+    </div>
+  </div>
+  <div class="input-container2">
+    <h2 class="texting">Base Fare
+      <input type="text" id="ticketPrice" placeholder="" class="box" size="5">
+    </h2>
+    <div id="res">
+      <h2 class="texting">Membership available for
+        <input type="text" id="loyaltyAirline" placeholder="" class="box" size="10" readonly>
+        <a href="loyalty.html" class="loyalty-link">View loyalty benefits</a>
+      </h2>
+      <!--<h2 class="texting">Purchase membership or Already Availed ?</h2>-->
+      <select id="loyaltyType" name= "loyaltyType" class="loyalty-dropdown">
+        <option value=""></option>
+        <option value="Gold">Gold Membership</option>
+        <option value="Silver">Silver Membership</option>
+        <option value="Platinum">Platinum Membership</option>
+        <option value="Availed-Gold">Availed-Gold</option>
+  <option value="Availed-Silver">Availed-Silver</option>
+  <option value="Availed-Platinum">Availed-Platinum</option>
+      </select>
+      <h2 class="texting">One time membership fees
+        <input type="text" id="membershipfees" placeholder="" class="box" size="5" readonly>
+      </h2>
+      <button id="updatedPrice" class="updated" type="button">View Updated Fare</button>
+    </div>
+      <h2 class="texting">Updated/Final Price
+        <input type="text" id ="finalPrice" name="finalPrice" placeholder="" class="box" size="5">
+      </h2>
+    <button id="bookTicketButton" class="book-ticket" >Book Ticket</button>
+  </div>
+    </form>
+  <script src="script.js"></script>
+</body>
+
+</html>

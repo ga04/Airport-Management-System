@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>User</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+        @keyframes colorChange {
+  0% { color: #0049b7; } /* Start color */
+  25% { color: #51e2f5; } /* Middle color */
+  50% { color: #ff1d58; }
+  75% { color: #faf218; } 
+  100% { color: #fff; }/* End color */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #fff; /* Set background color to white */
+  overflow-x: hidden;
+}
+
+nav {
+  background: #000; /* Set background color of the navigation bar to black */
+  display: flex;
+/* Center the navigation items horizontally */
+  padding: 10px; /* Add padding to the navigation bar */
+  
+  
+}
+nav a {
+  position: relative;
+  font-size: 1.1em;
+  color: #fff; /* Set text color to white */
+  text-decoration: none;
+  padding: 6px 15px; /* Adjust padding to bring text closer */
+  margin: 10px 0 5px; /* Adjust margin to bring text closer */
+  transition: 0.5s;
+}
+nav a.air-seva {
+  margin-left: 680px; /* Move the "Airसेवा" link to the extreme right */
+  font-weight: bold; /* Make it bold */
+  animation: colorChange 5s infinite; /* Change text color (adjust as needed) */
+  font-size: 1.5rem;
+  display: flex;
+  align-self: center;
+}
+nav a.air-seva img {
+  width: 70px;
+  height: 40px;
+margin-right: 150px;/* Adjust margin to provide space between text and image */
+}
+nav a:hover {
+  color: #0ef;
+}
+
+nav a.air-seva:hover {
+  color: #ff0000; /* Change hover color (adjust as needed) */
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjust the distance of the curve from the text */
+  width: 100%;
+  height: 5px; /* Adjust the height of the curve */
+  background: #0ef; /* Set the curve color */
+  border-radius: 10px 10px 50% 50% ; /* Create a semi-circle for the curve */
+  transform: scaleX(0); /* Initially set the scale to 0 for the curve effect */
+  transform-origin: top;
+  transition: transform 0.5s ease-in-out;
+}
+
+nav a:hover::before {
+  transform: scaleX(1);/* Expand the curve on hover */
+  transform-origin: top;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px); /* Adjust based on your navigation bar height and padding */
+}
+
+/* Existing styles remain unchanged */
+
+nav .flights-dropdown a {
+  margin: 0; /* Add this line to remove the default margin */
+}
+
+nav .flights-dropdown {
+  position: relative;
+  display: flex;
+  padding: 10px;
+}
+
+nav .flights-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+nav .flights-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+nav .flights-dropdown .dropdown-content a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+nav .flights-dropdown .dropdown-content a:hover {
+  background-color: #555;
+}
+
+:root {
+  --primary-color: #3d5cb8;
+  --primary-color-dark: #334c99;
+  --text-dark: #0f172a;
+  --text-light: #64748b;
+  --extra-light: #f1f5f9;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3rem;
+  color: var(--text-dark);
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100px;
+  margin-left: 30px;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+.header__container .section__header {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.booking__container {
+  border-radius: 2rem;
+  border: 1px solid var(--extra-light);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking__nav {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  background-color: var(--extra-light);
+  border-radius: 5px;
+}
+
+.booking__nav span {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.booking__nav span:nth-child(2) {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.booking__container form {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 1rem;
+}
+
+.booking__container .input__content {
+  width: 100%;
+}
+
+.booking__container .form__group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.booking__container .form__group span {
+  padding: 30px;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  background-color: var(--extra-light);
+  border-radius: 1rem;
+}
+
+.booking__container .input__group {
+  width: 100%;
+  position: relative;
+}
+
+.booking__container label {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.booking__container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  outline: none;
+  padding-left: 10px; /* Adjust this value as needed */
+  margin-top: 5px; /* Adjust this value as needed */
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-dark);
+}
+
+.booking__container input:focus ~ label {
+  font-size: 0.8rem;
+  top: 0;
+}
+
+.booking__container .form__group p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.booking__container .btn {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.plan__container .subheader {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 5px;
+}
+
+.plan__container .section__header {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.plan__container .description {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.plan__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.plan__content .number {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+}
+
+.plan__content .number:nth-child(4) {
+  background-color: #e98b6d;
+}
+
+.plan__content .number:nth-child(7) {
+  background-color: #ffcca3;
+}
+
+.plan__content h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.plan__content p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.plan__image {
+  position: relative;
+}
+
+.plan__image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 10rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.plan__image img:nth-child(1) {
+  max-width: 250px;
+  transform: translate(calc(-50% - 9rem), calc(-50% + 5rem));
+  z-index: 3;
+}
+
+.plan__image img:nth-child(2) {
+  max-width: 260px;
+  transform: translate(-50%, calc(-50% - 5rem));
+  z-index: 2;
+}
+
+.plan__image img:nth-child(3) {
+  max-width: 230px;
+  transform: translate(calc(-50% + 9rem), calc(-50% + 5rem));
+}
+
+.memories {
+  background-color: var(--extra-light);
+}
+
+.memories__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.memories__header .section__header {
+  max-width: 600px;
+}
+
+.memories__header .view__all {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: transparent;
+  white-space: nowrap;
+  outline: none;
+  border: 1px solid var(--text-light);
+  border-radius: 2rem;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.memories__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+.memories__card {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 5rem;
+  background-color: var(--white);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.05);
+}
+
+.memories__card span {
+  display: inline-block;
+  padding: 20px 32px;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+
+.memories__card:nth-child(2) span {
+  background-color: #e98b6d;
+}
+
+.memories__card:nth-child(3) span {
+  background-color: #ffcca3;
+}
+
+.memories__card h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.memories__card p {
+  color: var(--text-light);
+  line-height: 1.75rem;
+}
+
+.lounge__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.lounge__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.lounge__image {
+  position: relative;
+}
+
+.lounge__image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 20rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lounge__image img:nth-child(1) {
+  max-width: 300px;
+  transform: translate(calc(-50% - 3rem), -50%);
+}
+
+.lounge__image img:nth-child(2) {
+  max-width: 200px;
+  transform: translate(calc(-50% + 6rem), calc(-50% + 7rem));
+}
+
+.lounge__details h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.lounge__details p {
+  color: var(--text-light);
+}
+
+.travellers__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.travellers__card {
+  border-radius: 5rem;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.travellers__card__content {
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+}
+
+.travellers__card__content img {
+  position: absolute;
+  max-width: 70px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid var(--extra-light);
+  border-radius: 100%;
+}
+
+.travellers__card__content h4 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.travellers__card__content p {
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.subscribe {
+  background-color: var(--extra-light);
+}
+
+.subscribe__container {
+  max-width: 500px;
+  text-align: center;
+}
+
+.subscribe__form {
+  margin-top: 2rem;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--white);
+  border-radius: 2rem;
+}
+
+.subscribe__form input {
+  width: 100%;
+  padding: 0 1rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.footer {
+  background-color: var(--primary-color);
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  gap: 5rem;
+}
+
+.footer__col h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer__col h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer__col p {
+  color: var(--extra-light);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer__col p:hover {
+  color: var(--white);
+}
+
+.footer__bar {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--extra-light);
+}
+
+.footer__bar p {
+  font-size: 0.9rem;
+  color: var(--extra-light);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials span {
+  font-size: 1.2rem;
+  color: var(--extra-light);
+}
+
+@media (width < 1200px) {
+  .section__container.header__container,
+  .section__container.plan__container,
+  .section__container.lounge__container {
+    overflow: hidden;
+  }
+
+  .memories__grid {
+    gap: 3rem;
+  }
+}
+
+@media (width < 900px) {
+  nav .btn {
+    display: none;
+  }
+
+  .header__container img {
+    min-width: 900px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .booking__container form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .plan__image {
+    min-height: 600px;
+    grid-area: 1/1/2/2;
+  }
+
+  .memories__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .lounge__container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .lounge__image {
+    min-height: 600px;
+  }
+
+  .travellers__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__container {
+    gap: 2rem;
+  }
+}
+@media (width < 600px) {
+  .nav__links {
+    display: none;
+  }
+
+  .booking__nav span {
+    padding: 1rem 0.5rem;
+  }
+
+  .booking__container form {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .memories__header {
+    flex-direction: column;
+  }
+
+  .memories__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .lounge__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .travellers__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .footer__container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__bar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.texting{
+  margin-top: 50px;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="flights-dropdown">
+            <a href="#">Finance<span></span></a>
+            <div class="dropdown-content">
+                <a href="financial.html">Finance Tracker</a>
+                <a href="Facts&Figures.html">Facts & Figures</a>
+            </div>
+        </div>
+        <div class="flights-dropdown">
+            <a href="#">Flights<span></span></a>
+            <div class="dropdown-content">
+                <a href="flight.html">New Flight</a>
+                <a href="flightArrivals.html">Arriving Flights</a>
+                <a href="FlightDeparture.html">Departure Flights</a>
+                <a href="aircraft.html">Aircraft Details</a>
+                <a href="flight_schedule.html">Scheduled Flights</a>
+            </div>
+        </div>
+        <div class="flights-dropdown">
+            <a href="#">Employee<span></span></a>
+            <div class="dropdown-content">
+                <a href="employee.html">Employee Info</a>
+                <a href="add_employee.html">New Employee</a>
+                
+            </div>
+        </div>
+        <a href="passenger.html">Passenger</a>
+        <a href="maintenance.html">Maintenance</a>
+        <a href="#" class="air-seva">Airसेवा<img src="Admin.jpg" style="width: 70px; height: 40px; margin-right: 40px;" />
+</a>
+    </nav>
+    <header class="section__container header__container">
+        <h1 class="section__header">Explore the Excellence of Our<br />Airport Management System</h1>
+        <img src="Admin1.jpg" alt="header" style="border-radius: 110%; height: 350px; width: 75%; margin-top: 40px; margin-left: 150px;" />
+    </header>
+    <section class="section__container plan__container">
+        <p class="subheader">ADMIN SUPPORT</p>
+        <h2 class="section__header">Streamline Airport Operations</h2>
+        <p class="description">
+            Access essential tools and information to effectively manage airport operations. Explore the resources below to optimize your administrative responsibilities.
+        </p>
+        <div class="plan__grid">
+            <div class="plan__content">
+                <span class="number">01</span>
+                <h4>Operational Guidelines</h4>
+                <p>
+                    Stay informed about operational guidelines to ensure a smooth and efficient airport experience. Access detailed information for managing day-to-day activities.
+                </p>
+                <span class="number">02</span>
+                <h4>Risk Mitigation Strategies</h4>
+                <p>
+                    Implement comprehensive risk mitigation strategies to safeguard airport assets and operations. Explore proactive measures for handling potential challenges.
+                </p>
+                <span class="number">03</span>
+                <h4>Destination-Specific Protocols</h4>
+                <p>
+                    Stay updated on destination-specific protocols and requirements. Access real-time information to facilitate effective decision-making for airport services.
+                </p>
+            </div>
+            <div class="plan__image">
+                <img src="plan-1.jpg" alt="plan" />
+                <img src="plan-2.jpg" alt="plan" />
+                <img src="plan-3.jpg" alt="plan" />
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="memories">
+        <div class="section__container memories__container">
+            <div class="memories__header">
+                <h2 class="section__header">
+                    Enhance Airport Operations
+                </h2>
+                
+            </div>
+            <div class="memories__grid">
+                <div class="memories__card">
+                    <span><i class="ri-users-2-line"></i></span>
+                    <h4>Efficient Employee Management</h4>
+                    <p>
+                        Streamline employee schedules, track performance, and ensure a harmonious work environment with our Employee Management system.
+                    </p>
+                </div>
+                <div class="memories__card">
+                    <span><i class="ri-passport-line"></i></span>
+                    <h4>Passenger Tracking Excellence</h4>
+                    <p>
+                        Elevate passenger experiences through our advanced tracking system. Monitor passenger movements, preferences, and provide personalized services.
+                    </p>
+                </div>
+                <div class="memories__card">
+                    <span><i class="ri-plane-line"></i></span>
+                    <h4>Flight Management Mastery</h4>
+                    <p>
+                        Optimize flight schedules, monitor arrivals and departures, and ensure efficient flight operations with our Flight Management solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="section__container travellers__container">
+        <h2 class="section__header">Top Performers of the Month</h2>
+        <div class="travellers__grid">
+            <div class="travellers__card">
+                <img src="client-1.jpg" alt="employee" />
+                <div class="travellers__card__content">
+                    <h4>John Doe</h4>
+                    <p>Employee of the Month</p>
+                </div>
+            </div>
+            <div class="travellers__card">
+                <img src="Pilot.jpg" alt="employee" style="height: 270px;"/>
+                <div class="travellers__card__content">
+                    <h4>Jane Smith</h4>
+                    <p>Top Frequent Flyer</p>
+                </div>
+            </div>
+            <div class="travellers__card">
+                <img src="client-3.jpg" alt="passenger" />
+                <div class="travellers__card__content">
+                    <h4>Emma White</h4>
+                    <p>Best Ground Staff Performance</p>
+                </div>
+            </div>
+            <div class="travellers__card">
+                <img src="indigo.jpg" alt="flight" height="270px"/>
+                <div class="travellers__card__content">
+                    <h4>Indigo F101</h4>
+                    <p>Best On-Time Performance</p>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3>Admin Portal</h3>
+                <p>
+                    Welcome to the Admin Portal. Your central hub for managing airport operations
+                    and ensuring smooth travel experiences for passengers and employees.
+                </p>
+                <p>
+                    From data analytics to resource management, we empower administrators to
+                    optimize airport services and enhance overall efficiency.
+                </p>
+            </div>
+            <div class="footer__col">
+                <h4>ADMINISTRATION</h4>
+                <p>Dashboard</p>
+                <p>Employee Management</p>
+                <p>Passenger Tracking</p>
+                <p>Flight Management</p>
+                <p>Reports</p>
+            </div>
+            <div class="footer__col">
+                <h4>CONTACT</h4>
+                <p>Admin Support</p>
+                <p>Media Relations</p>
+                <p>System Updates</p>
+            </div>
+        </div>
+        <div class="section__container footer__bar">
+            <p>Copyright © 2023 Airport Admin Hub. All rights reserved.</p>
+            <div class="socials">
+                <span><i class="ri-linkedin-fill"></i></span>
+                <span><i class="ri-twitter-fill"></i></span>
+                <span><i class="ri-github-fill"></i></span>
+                <span><i class="ri-mail-fill"></i></span>
+            </div>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>

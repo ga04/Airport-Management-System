@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Maintenance</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: white;
+            width: 100%;
+        }
+
+        /* Styling to center the button */
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Airport Maintenance</h1>
+    </header>
+
+    <div class="container">
+        <section class="maintenance-section">
+            <h2>Flight Maintenance</h2>
+            <form id="flightForm">
+                <!-- Flight Maintenance Form Fields -->
+                <label for="flightNumber">Flight Number:</label>
+                <input type="text" id="flightNumber" name="flightNumber" required>
+
+                <label for="maintenanceType">Maintenance Type:</label>
+                <select id="maintenanceType" name="maintenanceType" required>
+                    <option value="routine">Routine Maintenance</option>
+                    <option value="emergency">Emergency Maintenance</option>
+                </select>
+
+                <label for="maintenanceDescription">Maintenance Description:</label>
+                <textarea id="maintenanceDescription" name="maintenanceDescription" rows="4" required></textarea>
+
+                <label for="maintenanceCost">Maintenance Cost:</label>
+                <input type="number" id="maintenanceCost" name="maintenanceCost" required>
+
+                <button type="button" onclick="submitFlightMaintenance()">Submit Maintenance Request</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="container">
+        <section class="maintenance-section">
+            <h2>Ground Work Maintenance</h2>
+            <form id="groundWorkForm">
+                <!-- Ground Work Maintenance Form Fields -->
+                <h3>Maintenance of Equipment and Vehicles</h3>
+
+                <label for="equipmentType">Equipment Type:</label>
+                <input type="text" id="equipmentType" name="equipmentType" required>
+
+                <label for="vehicleType">Vehicle Type:</label>
+                <input type="text" id="vehicleType" name="vehicleType" required>
+
+                <label for="equipmentMaintenanceDescription">Maintenance Description:</label>
+                <textarea id="equipmentMaintenanceDescription" name="equipmentMaintenanceDescription" rows="4" required></textarea>
+
+                <label for="equipmentMaintenanceCost">Maintenance Cost:</label>
+                <input type="number" id="equipmentMaintenanceCost" name="equipmentMaintenanceCost" required>
+
+                <button type="button" onclick="submitGroundWorkMaintenance()">Submit Ground Work Maintenance Request</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="container">
+        <section class="maintenance-section">
+            <h2>Building Maintenance</h2>
+            <form id="buildingMaintenanceForm">
+                <!-- Building Maintenance Form Fields -->
+                <label for="buildingName">Building Name:</label>
+                <input type="text" id="buildingName" name="buildingName" required>
+
+                <label for="electricityMaintenance">Electricity Maintenance:</label>
+                <select id="electricityMaintenance" name="electricityMaintenance" required>
+                    <option value="scheduled">Scheduled Maintenance</option>
+                    <option value="emergency">Emergency Repair</option>
+                </select>
+
+                <label for="cleaning">Cleaning:</label>
+                <select id="cleaning" name="cleaning" required>
+                    <option value="daily">Daily Cleaning</option>
+                    <option value="weekly">Weekly Cleaning</option>
+                    <option value="monthly">Monthly Cleaning</option>
+                </select>
+
+                <label for="buildingWorkDescription">Work Description:</label>
+                <textarea id="buildingWorkDescription" name="buildingWorkDescription" rows="4" required></textarea>
+
+                <label for="buildingMaintenanceCost">Maintenance Cost:</label>
+                <input type="number" id="buildingMaintenanceCost" name="buildingMaintenanceCost" required>
+
+                <button type="button" onclick="submitBuildingMaintenance()">Submit Building Maintenance Request</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- New "Submit All Maintenance Requests" button centered in a container -->
+    <div class="button-container">
+        <button type="button" onclick="submitAllMaintenance()">Submit All Maintenance Requests</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Airport Maintenance</p>
+    </footer>
+
+    <script>
+        // Function to submit flight maintenance data and redirect
+        function submitFlightMaintenance() {
+            // Retrieve data from form fields
+            var flightNumber = document.getElementById("flightNumber").value;
+            var maintenanceType = document.getElementById("maintenanceType").value;
+            var maintenanceDescription = document.getElementById("maintenanceDescription").value;
+            var maintenanceCost = document.getElementById("maintenanceCost").value;
+
+            // Store data in session storage with form type "flight"
+            sessionStorage.setItem("formType", "flight");
+            sessionStorage.setItem("flightNumber", flightNumber);
+            sessionStorage.setItem("maintenanceType", maintenanceType);
+            sessionStorage.setItem("maintenanceDescription", maintenanceDescription);
+            sessionStorage.setItem("maintenanceCost", maintenanceCost);
+
+            // Redirect to report page
+            window.location.href = "report.html";
+        }
+
+        // Function to submit ground work maintenance data and redirect
+        function submitGroundWorkMaintenance() {
+            // Retrieve data from form fields
+            var equipmentType = document.getElementById("equipmentType").value;
+            var vehicleType = document.getElementById("vehicleType").value;
+            var equipmentMaintenanceDescription = document.getElementById("equipmentMaintenanceDescription").value;
+            var equipmentMaintenanceCost = document.getElementById("equipmentMaintenanceCost").value;
+
+            // Store data in session storage with form type "groundWork"
+            sessionStorage.setItem("formType", "groundWork");
+            sessionStorage.setItem("equipmentType", equipmentType);
+            sessionStorage.setItem("vehicleType", vehicleType);
+            sessionStorage.setItem("equipmentMaintenanceDescription", equipmentMaintenanceDescription);
+            sessionStorage.setItem("equipmentMaintenanceCost", equipmentMaintenanceCost);
+
+            // Redirect to report page
+            window.location.href = "report.html";
+        }
+
+        // Function to submit building maintenance data and redirect
+        function submitBuildingMaintenance() {
+            // Retrieve data from form fields
+            var buildingName = document.getElementById("buildingName").value;
+            var electricityMaintenance = document.getElementById("electricityMaintenance").value;
+            var cleaning = document.getElementById("cleaning").value;
+            var buildingWorkDescription = document.getElementById("buildingWorkDescription").value;
+            var buildingMaintenanceCost = document.getElementById("buildingMaintenanceCost").value;
+
+            // Store data in session storage with form type "building"
+            sessionStorage.setItem("formType", "building");
+            sessionStorage.setItem("buildingName", buildingName);
+            sessionStorage.setItem("electricityMaintenance", electricityMaintenance);
+            sessionStorage.setItem("cleaning", cleaning);
+            sessionStorage.setItem("buildingWorkDescription", buildingWorkDescription);
+            sessionStorage.setItem("buildingMaintenanceCost", buildingMaintenanceCost);
+
+            // Redirect to report page
+            window.location.href = "report.html";
+        }
+
+        // Function to submit all maintenance data and redirect
+        function submitAllMaintenance() {
+            // Set form type to "all" in session storage
+            sessionStorage.setItem("formType", "all");
+            // Redirect to report page
+            window.location.href = "report.html";
+        }
+    </script>
+</body>
+
+</html>

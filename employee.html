@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Details</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('employeeImg.jpg') center center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      background-color: transparent;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: slideIn 0.5s ease-in-out;
+      margin: 20px; /* Add margin for positioning */
+  position: absolute;
+  top: 100px;
+  left: 30px;
+    }
+
+    input {
+      width: calc(100% - 20px);
+      padding: 15px;
+      margin: 20px 10px;
+      box-sizing: border-box;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #3a476e;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #1f3489;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .employee-card {
+      background-color: rgba(61, 92, 184, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .employee-card h2 {
+      margin-bottom: 10px;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <input type="text" id="employeeId" placeholder="Enter Employee ID">
+    <button id="viewButton">Get Details</button>
+
+    <div id="result">
+      <div class="employee-card" id="employeeCard">
+        <h2 id="employeeName"></h2>
+        <p id="employeePosition"></p>
+        <p id="employeeAirlineId"></p>
+        <p id="employeeSalary"></p>
+      </div>
+    </div>
+  </div>
+  <script src="employee.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+body {
+    background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Light-blue-wallpaper-hd-quality.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .image-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .image-container img {
+    max-width: 22%;
+    height: auto;
+    margin-top:150px;
+    margin-left: 250px;
+  }
+  
+  .content-container {
+    margin-left: 20px; /* Add space from the left */
+  }
+  
+  .bullet-list {
+    list-style-type: disc; /* Use a dot for bullets */
+  }
+  .texting
+  {
+    margin-left: 50px;
+    margin-top: 20px;
+  }
+  .content-container1{
+    margin-left: 20px;
+  }
+  .texting1
+  {
+    margin-left: 50px;
+    margin-top: 220px;
+  }
+  .image-container1 img {
+    max-width: 22%;
+    height: auto;
+    margin-top:60px;
+    margin-left: 250px;
+  }
+  .texting2
+  {
+    margin-left: 50px;
+  }
+
+ .boxes
+ {
+    margin-left: 50px;
+ }
+ .Aircraft-Text{
+    margin-left: 50px;
+ }
+ .go-button
+ {
+    margin-left: 20px;
+ }
+ .result
+ {
+  margin-left: 50px;
+  margin-top: 30px;
+ }

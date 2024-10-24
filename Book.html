@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+</head>
+<body>
+    
+    <h2 class="texting">Base Fare
+        <input type="text" id="ticketPrice" placeholder="" class="box" size="5">
+      </h2>
+
+      <h2 class="texting">Membership available for
+        <input type="text" id="loyaltyAirline" placeholder="" class="box" size="10" readonly>
+      </h2>
+
+      <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        const basePrice=getParameterByName('basePrice');
+        document.getElementById('ticketPrice').innerHTML=basePrice
+      </script>
+</body>
+</html>

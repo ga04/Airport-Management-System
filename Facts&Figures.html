@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: scroll; /* Prevent default margin/padding and enable full-height image */
+        }
+
+        img {
+            width: 100%;
+            height: 50vh; /* Set the height to 50% of the viewport height */
+            object-fit: cover; /* Maintain image aspect ratio and cover entire container */
+        }
+
+        .text-container {
+            position: absolute;
+            top: 75%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 1.5em;
+        }
+
+        .image-container {
+            position: absolute;
+            top: 80%;
+            left: 75%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Adjust the width of the image container */
+        }
+
+        .image-container img {
+            margin-left: 45%;
+            width: 50%;
+            object-fit: cover;
+            height: 50%;
+        }
+
+        .flight-label h1 {
+            position: absolute;
+            top: 110%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .flight-label p {
+            position: absolute;
+            top: 110%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+
+        .airline-label h1 {
+            position: absolute;
+            top: 110%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .airline-label p {
+            position: absolute;
+            top: 110%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+        
+        .aircraft-label h1 {
+            position: absolute;
+            top: 145%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .aircraft-label p {
+            position: absolute;
+            top: 145%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+        .pilot-label h1 {
+            position: absolute;
+            top: 145%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .pilot-label p {
+            position: absolute;
+            top: 145%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+        .staff-label h1 {
+            position: absolute;
+            top: 180%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .staff-label p {
+            position: absolute;
+            top: 180%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+        .passenger-label h1 {
+            position: absolute;
+            top: 180%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            color: blue;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        .passenger-label p {
+            position: absolute;
+            top: 180%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5em; /* Increase the text size for the <p> element */
+            color: black;   /* Change the color of the <p> element to black */
+            text-decoration: underline;
+            margin-top: 7%;
+        }
+        /*.box{
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 40px;
+            border: 2px solid navy;
+            top: 110%;
+         margin-top: 25%;
+         margin-left: 10px;
+         width:27%;
+         height:145px;
+        }*/
+    </style>
+</head>
+<body>
+    <img src="facts&figures.jpg" alt="Facts and Figures Image">
+    <div class="text-container">
+        <h1>Let's dive into our some of the interesting facts and figures.</h1>
+        <p><strong> Discover key statistics, performance metrics, and insightful data </strong> illuminate the story of our airport's success. From passenger, employee numbers and flight operations our commitment to openness ensures you have a comprehensive understanding of our airport's journey. We invite you to explore the numbers, delve into the details, and witness the impressive milestones that shape our airport's legacy.</p>
+    </div>
+    <div class="image-container">
+        <img src="facts2.jpg">
+    </div>
+<div class="box">
+    <div class="flight-label content-box">
+        <h1>No. of Flights</h1>
+        <p id="flightCount"></p>
+    </div>
+</div>
+
+    <div class="airline-label content-box">
+        <h1>No. of Airline</h1>
+        <p id="airlineCount"></p>
+    </div>
+
+    <div class="aircraft-label content-box">
+        <h1>No. of Aircraft</h1>
+        <p id="aircraftCount"></p>
+    </div>
+    <div class="pilot-label content-box">
+        <h1>No. of Pilots</h1>
+        <p id="pilotCount"></p>
+    </div>
+    <div class="staff-label content-box">
+        <h1>No. of Crew Staff</h1>
+        <p id="staffCount"></p>
+    </div>
+    <div class="passenger-label content-box">
+        <h1>No. of Passengers</h1>
+        <p id="passengerCount"></p>
+    </div>
+    
+    <script>
+
+          // Function to animate text with fadeIn effect
+        function fadeIn(element, duration) {
+            element.style.opacity = 0;
+            let startTime;
+            function fadeInEffect(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
+                const percentage = Math.min(progress / duration, 1);
+                element.style.opacity = percentage;
+    
+                if (progress < duration) {
+                    requestAnimationFrame(fadeInEffect);
+                }
+            }
+    
+            requestAnimationFrame(fadeInEffect);
+        }
+    
+        // Function to animate number with smooth effect
+        function animateNumber(targetElement, start, end, duration) {
+        let startTime;
+        function updateNumber(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const percentage = Math.min(progress / duration, 1);
+            const currentNumber = Math.round(start + percentage * (end - start));
+            targetElement.innerText = currentNumber;
+
+            if (progress < duration) {
+                requestAnimationFrame(updateNumber);
+            }
+        }
+
+        requestAnimationFrame(updateNumber);
+    }
+
+    
+      
+        // Fetch the flight count from the server
+        fetch('/getFlightCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('flightCount'), 0, data.flightCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching flight count:', error));
+    
+        // Fetch the airline count from the server
+        fetch('/getAirlineCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('airlineCount'), 0, data.airlineCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching airline count:', error));
+    
+        // Fetch the aircraft count from the server
+        fetch('/getAircraftCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('aircraftCount'), 0, data.aircraftCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching aircraft count:', error));
+    
+        // Fetch the pilot count from the server
+        fetch('/getPilotCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('pilotCount'), 0, data.pilotCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching pilot count:', error));
+    
+        // Fetch the staff count from the server
+        fetch('/getStaffCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('staffCount'), 0, data.staffCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching staff count:', error));
+    
+        // Fetch the passenger count from the server
+        fetch('/getPassengerCount')
+            .then(response => response.json())
+            .then(data => {
+                animateNumber(document.getElementById('passengerCount'), 0, data.passengerCount, 2000); // Adjust duration as needed
+            })
+            .catch(error => console.error('Error fetching passenger count:', error));
+    
+        // Fade in effect for text-container
+        fadeIn(document.querySelector('.text-container'), 3000); // Adjust duration as needed
+    </script>
+    
+</body>
+</html>

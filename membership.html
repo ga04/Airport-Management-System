@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(img.jpg);
+            background-size: cover;
+        }
+        .hi-slide{
+            position: relative;
+            width: 754px;
+            height: 292px;
+            border-radius: 50px;
+            margin-left: 110px  ;
+            margin-bottom: 60px;
+
+        }
+        .hi-slide .hi-next, .hi-slide .hi-prev{ 
+            position: absolute; 
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            border-radius: 50px;
+            line-height: 40px; 
+            text-align: center; 
+            cursor: pointer;
+            background-color: white; 
+            color: black;
+            transition: all 0.7s; 
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .hi-slide .hi-next:hover,
+        .hi-slide .hi-prev:hover{
+            opacity: 1;
+            background-color: white;
+        }
+        .hi-slide .hi-prev{ left: -60px;}
+
+        .hi-slide .hi-prev::before{
+            content: '<';
+        }
+        .hi-slide .hi-next{
+            right: -60px;
+        }
+        .hi-slide .hi-next::before{
+            content: '>';
+        }
+        .hi-slide > ul{
+            list-style: none;
+            position: relative; 
+            width: 754px;
+            height: 292px;
+            margin: 0;
+            padding: 0;
+        }
+        .hi-slide > ul > li{ 
+            overflow: hidden;
+            position: absolute;
+            z-index: 0;
+            left: 377px;
+            top: 147px; 
+            width: 0; 
+            height: 0;
+            margin: 0; 
+            padding: 0;
+            border: 3px solid white;
+            cursor: pointer;
+            background-color: #333;
+        }
+        .hi-slide > ul > li> img{
+            width: 100%;    
+            height: 100%;
+            background-position: center;
+        }
+
+        /* Additional styles for card section */
+        @import url('https://fonts.googleapis.com/css?family=Lato:wght@300;400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: #d7d8d8;
+}
+.card {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #000;
+max-width: 310px;
+min-width: 250px;
+margin: 10px;
+overflow: hidden;
+border-radius: 30px;
+box-shadow: 10px 10px 15px #7f8080;
+
+}
+.card-container {
+
+            display: flex;
+            justify-content: center;
+             /* Adjust the margin as needed */
+            
+        }
+.card img{
+position: relative;
+ vertical-align: top; 
+ max-width: 100%;
+ transition: 0.25s ease;
+}
+.card:hover img{
+    transform: scale(1.1);
+}
+.card figcaption { 
+    position: absolute;
+     padding: 15px 20px 40px;
+     bottom: 0;
+z-index: 1;
+}
+
+.card figcaption::before{ 
+    content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(90deg,#b2c4c9,#fff);
+opacity: 0.8;
+z-index: -1;
+}
+.card h3 {
+display: inline-block;
+ margin-bottom: 5px;
+}
+.card p{
+font-size: 0.8em;
+line-height: 1.6em;
+}
+.card a {
+    position: absolute;
+    bottom: 10px;
+    display: inline-block;
+    font-size: 0.75em;
+    color: #fff;
+    background: #413b3b;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    z-index: 1;
+    transition: 0.5s;       
+}
+.card a:hover{
+    background: #242020;
+}
+.entire{
+    display: flex;
+    flex-direction: column;
+}
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="entire">
+    <!-- Slideshow -->
+    <div class="slide hi-slide">
+        <div class="hi-prev"></div> 
+        <div class="hi-next"></div>
+        <ul>
+            <li><img src="air-india.jpg" alt=""></li>
+            <li><img src="qatar.png" alt=""></li> 
+            <li><img src="emirates.jpg" alt=""></li>
+            <li><img src="air-india.jpg" alt=""></li>
+            <li><img src="qatar.png" alt=""></li> 
+            <li><img src="emirates.jpg" alt=""></li>
+            <li><img src="air-india.jpg" alt=""></li>
+            <li><img src="qatar.png" alt=""></li> 
+        </ul>
+    </div>
+    <div class="card-container">
+
+    <!-- Card Section -->
+    <figure class="card">
+        <div class="image"><img src="air_india.avif" alt=""></div>
+        <figcaption>
+            <h3>Air India</h3>
+            <p>
+                Unlock savings with our membership tiers: 5% off with Silver, 10% off with Gold, and an exclusive 15% discount with Platinum.
+            </p> 
+        </figcaption>
+        <a href="#">Read More</a>
+    </figure>
+    <figure class="card">
+        <div class="image"><img src="emirates.png" alt=""></div>
+        <figcaption>
+            <h3>Emirates</h3>
+            <p>
+                
+Unlock savings with our membership tiers: 7% off with Silver, 13% off with Gold, and an exclusive 18% discount with Platinum.
+            </p> 
+        </figcaption>
+        <a href="#">Read More</a>
+    </figure>
+    <figure class="card">
+        <div class="image"><img src="qatar-airways.jpg" alt=""></div>
+        <figcaption>
+            <h3>Qatar Airways</h3>
+            <p>
+                Unlock savings with our membership tiers: 6% off with Silver, 11% off with Gold, and an exclusive 17% discount with Platinum.
+            </p> 
+        </figcaption>
+        <a href="#">Read More</a>
+    </figure>
+    </div>
+</div>
+    <!-- Include jQuery and the slideshow script -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/jquery.hislide.js"></script>
+    
+    <!-- Initialize the slideshow -->
+    <script>
+        $('.slide').hiSlide();
+    </script>
+</body>
+</html>

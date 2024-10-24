@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: none; /* Hide containers by default */
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center; /* Center-align the content */
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Maintenance Report</h1>
+    </header>
+
+    <div class="container" id="flightContainer">
+        <section class="maintenance-section">
+            <h2>Flight Maintenance</h2>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Flight Number</td>
+                    <td id="flightNumber"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Type</td>
+                    <td id="maintenanceType"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Description</td>
+                    <td id="maintenanceDescription"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Cost</td>
+                    <td id="maintenanceCost"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <div class="container" id="groundWorkContainer">
+        <section class="maintenance-section">
+            <h2>Ground Work Maintenance</h2>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Equipment Type</td>
+                    <td id="equipmentType"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle Type</td>
+                    <td id="vehicleType"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Description</td>
+                    <td id="equipmentMaintenanceDescription"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Cost</td>
+                    <td id="equipmentMaintenanceCost"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <div class="container" id="buildingContainer">
+        <section class="maintenance-section">
+            <h2>Building Maintenance</h2>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Building Name</td>
+                    <td id="buildingName"></td>
+                </tr>
+                <tr>
+                    <td>Electricity Maintenance</td>
+                    <td id="electricityMaintenance"></td>
+                </tr>
+                <tr>
+                    <td>Cleaning</td>
+                    <td id="cleaning"></td>
+                </tr>
+                <tr>
+                    <td>Work Description</td>
+                    <td id="buildingWorkDescription"></td>
+                </tr>
+                <tr>
+                    <td>Maintenance Cost</td>
+                    <td id="buildingMaintenanceCost"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Airport Maintenance</p>
+    </footer>
+
+    <script>
+        // Retrieve data from session storage and display it based on the form type
+        var formType = sessionStorage.getItem("formType");
+
+        // Hide all containers initially
+        document.getElementById("flightContainer").style.display = "none";
+        document.getElementById("groundWorkContainer").style.display = "none";
+        document.getElementById("buildingContainer").style.display = "none";
+
+        // Show the relevant container based on the form type
+        if (formType === "flight") {
+            document.getElementById("flightContainer").style.display = "block";
+            document.getElementById("flightNumber").innerText = sessionStorage.getItem("flightNumber");
+            document.getElementById("maintenanceType").innerText = sessionStorage.getItem("maintenanceType");
+            document.getElementById("maintenanceDescription").innerText = sessionStorage.getItem("maintenanceDescription");
+            document.getElementById("maintenanceCost").innerText = sessionStorage.getItem("maintenanceCost");
+        } else if (formType === "groundWork") {
+            document.getElementById("groundWorkContainer").style.display = "block";
+            document.getElementById("equipmentType").innerText = sessionStorage.getItem("equipmentType");
+            document.getElementById("vehicleType").innerText = sessionStorage.getItem("vehicleType");
+            document.getElementById("equipmentMaintenanceDescription").innerText = sessionStorage.getItem("equipmentMaintenanceDescription");
+            document.getElementById("equipmentMaintenanceCost").innerText = sessionStorage.getItem("equipmentMaintenanceCost");
+        } else if (formType === "building") {
+            document.getElementById("buildingContainer").style.display = "block";
+            document.getElementById("buildingName").innerText = sessionStorage.getItem("buildingName");
+            document.getElementById("electricityMaintenance").innerText = sessionStorage.getItem("electricityMaintenance");
+            document.getElementById("cleaning").innerText = sessionStorage.getItem("cleaning");
+            document.getElementById("buildingWorkDescription").innerText = sessionStorage.getItem("buildingWorkDescription");
+            document.getElementById("buildingMaintenanceCost").innerText = sessionStorage.getItem("buildingMaintenanceCost");
+        } else if (formType === "all") {
+            // If the "all" button was clicked, display all sections
+            document.getElementById("flightContainer").style.display = "block";
+            document.getElementById("groundWorkContainer").style.display = "block";
+            document.getElementById("buildingContainer").style.display = "block";
+
+            // Populate flight maintenance data
+            document.getElementById("flightNumber").innerText = sessionStorage.getItem("flightNumber");
+            document.getElementById("maintenanceType").innerText = sessionStorage.getItem("maintenanceType");
+            document.getElementById("maintenanceDescription").innerText = sessionStorage.getItem("maintenanceDescription");
+            document.getElementById("maintenanceCost").innerText = sessionStorage.getItem("maintenanceCost");
+
+            // Populate ground work maintenance data
+            document.getElementById("equipmentType").innerText = sessionStorage.getItem("equipmentType");
+            document.getElementById("vehicleType").innerText = sessionStorage.getItem("vehicleType");
+            document.getElementById("equipmentMaintenanceDescription").innerText = sessionStorage.getItem("equipmentMaintenanceDescription");
+            document.getElementById("equipmentMaintenanceCost").innerText = sessionStorage.getItem("equipmentMaintenanceCost");
+
+            // Populate building maintenance data
+            document.getElementById("buildingName").innerText = sessionStorage.getItem("buildingName");
+            document.getElementById("electricityMaintenance").innerText = sessionStorage.getItem("electricityMaintenance");
+            document.getElementById("cleaning").innerText = sessionStorage.getItem("cleaning");
+            document.getElementById("buildingWorkDescription").innerText = sessionStorage.getItem("buildingWorkDescription");
+            document.getElementById("buildingMaintenanceCost").innerText = sessionStorage.getItem("buildingMaintenanceCost");
+        }
+    </script>
+</body>
+
+</html>

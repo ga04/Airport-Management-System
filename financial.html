@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Airport Management System</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="financial.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/966038093e.js" crossorigin="anonymous"></script>
+  <!-- Add this line to include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var ticketChart; // Variable to store the ticket chart instance
+    var salaryChart; // Variable to store the salary chart instance
+    var ticketPieChart; // Variable to store the ticket pie chart instance
+    var salaryPieChart; // Variable to store the salary pie chart instance
+
+    // Function to fetch financial information for all airlines
+    function fetchAllFinancialInfo() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/get-all-financial-info", true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Parse the JSON response
+          var data = JSON.parse(xhr.responseText);
+
+          // Update the frontend with the obtained information
+          for (var i = 0; i < data.length; i++) {
+            addRowToTable(data[i]);
+          }
+        } else {
+          console.error("Failed to fetch financial information");
+        }
+      };
+
+      xhr.send();
+    }
+
+    // Function to fetch financial information for ticket and create charts
+    function revenueTicket() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/get-all-financial-info", true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Log the data before parsing
+          console.log("Data before parsing (revenueTicket):", xhr.responseText);
+
+          // Parse the JSON response
+          var data = JSON.parse(xhr.responseText);
+          console.log("Parsed Data (revenueTicket):", data);
+
+          // Update the frontend with the obtained information
+          //clearCharts();
+          createCharts(data, "ticketAmountChart", "Total Ticket Amount");
+        } else {
+          console.error("Failed to fetch financial information");
+        }
+      };
+
+      xhr.send();
+    }
+
+    // Function to fetch financial information for salary and create charts
+    function salaryProcessed() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/get-all-financial-info", true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Log the data before parsing
+          console.log("Data before parsing (salaryProcessed):", xhr.responseText);
+
+          // Parse the JSON response
+          var data = JSON.parse(xhr.responseText);
+          console.log("Parsed Data (salaryProcessed):", data);
+
+          // Update the frontend with the obtained information
+          clearCharts();
+          createCharts(data, "salaryProcessedChart", "Total Salary");
+        } else {
+          console.error("Failed to fetch financial information");
+        }
+      };
+
+      xhr.send();
+    }
+
+    // Function to create charts based on data
+    function createCharts(data, canvasId, label) {
+      createBarChart(data, canvasId, label);
+      createPieChart(data, canvasId);
+    }
+
+    // Function to create a bar chart
+    function createBarChart(data, canvasId, label) {
+      var labels = [];
+      var amounts = [];
+      var barColors = [];
+
+      // Extract data for the chart
+      for (var i = 0; i < data.length; i++) {
+        labels.push(data[i].airline);
+        amounts.push(data[i][canvasId === "ticketAmountChart" ? "totalTicketAmount" : "totalSalary"]);
+
+        var color;
+        if (i === 0) {
+          color = 'rgba(0, 0, 255, 0.2)';
+        } else if (i === 1) {
+          color = 'rgba(255, 0, 0, 0.2)';
+        } else {
+          color = 'rgba(' +
+            Math.floor(Math.random() * 256) + ',' +
+            Math.floor(Math.random() * 256) + ',' +
+            Math.floor(Math.random() * 256) + ', 0.2)';
+        }
+
+        barColors.push(color);
+      }
+
+      // Get the canvas element and create a bar chart
+      var ctx = document.getElementById(canvasId).getContext("2d");
+      var myBarChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [{
+            label: label,
+            data: amounts,
+            backgroundColor: barColors,
+            borderColor: "rgba(75,192,192,1)",
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              barPercentage: 0.5,
+              categoryPercentage: 0.5,
+              ticks: {
+                autoSkip: false
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: true,
+            position: 'top'
+          }
+        }
+      });
+
+      // Save the chart instance for later use
+      if (canvasId === "ticketAmountChart") {
+        ticketChart = myBarChart;
+      } else {
+        salaryChart = myBarChart;
+      }
+    }
+
+    // Function to create a pie chart
+    function createPieChart(data, canvasId) {
+      var labels = [];
+      var amounts = [];
+      var pieColors = [];
+
+      // Extract data for the chart
+      for (var i = 0; i < data.length; i++) {
+        labels.push(data[i].airline);
+        amounts.push(data[i][canvasId === "ticketAmountChart" ? "totalTicketAmount" : "totalSalary"]);
+
+        var color = 'rgba(' +
+          Math.floor(Math.random() * 256) + ',' +
+          Math.floor(Math.random() * 256) + ',' +
+          Math.floor(Math.random() * 256) + ', 0.7)';
+        pieColors.push(color);
+      }
+
+      // Get the canvas element and create a pie chart
+      var ctx = document.getElementById(canvasId + "Pie").getContext("2d");
+      var myPieChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: labels,
+          datasets: [{
+            data: amounts,
+            backgroundColor: pieColors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          legend: {
+            display: true,
+            position: 'right'
+          }
+        }
+      });
+
+      // Save the pie chart instance for later use
+      if (canvasId === "ticketAmountChart") {
+        ticketPieChart = myPieChart;
+      } else {
+        salaryPieChart = myPieChart;
+      }
+    }
+
+    // Function to add a row to the result table
+    function addRowToTable(data) {
+      var table = document.getElementById("resultTable");
+      var row = table.insertRow(-1);
+
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+
+      cell1.innerHTML = data.airline;
+      cell2.innerHTML = data.airlineAccountNo;
+      cell3.innerHTML = data.employeeCount;
+      cell4.innerHTML = data.passengerCount;
+      cell5.innerHTML = data.totalSalary;
+      cell6.innerHTML = data.totalTicketAmount;
+    }
+
+    // Function to clear existing charts
+    function clearCharts() {
+      if (ticketChart) {
+        ticketChart.destroy();
+      }
+      if (salaryChart) {
+        salaryChart.destroy();
+      }
+      if (ticketPieChart) {
+        ticketPieChart.destroy();
+      }
+      if (salaryPieChart) {
+        salaryPieChart.destroy();
+      }
+    }
+
+    // Fetch financial information for all airlines when the page is loaded
+    window.onload = fetchAllFinancialInfo;
+  </script>
+  <style>
+    
+    #chartContainer {
+      float: right;
+      margin-right: 50px;
+    }
+
+    canvas {
+      width: 400px;
+      height: 300px;
+    }
+
+    #pieChartContainer {
+      float: right;
+      margin-right: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left-container">
+    <button onclick="revenueTicket()">Revenue from Ticket</button>
+    <button onclick="salaryProcessed()">Salary Processed</button>
+    
+  </div>
+
+  <div id="result" class="result">
+    <h2 class="texting">Financial Dashboard</h2>
+    <table id="resultTable" class="table">
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Airline Account No</th>
+          <th>Employee Count</th>
+          <th>Tickets Booked</th>
+          <th>Total Salary</th>
+          <th>Total Ticket Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="graphs">
+  <div id="chartContainer">
+    <canvas id="ticketAmountChart" width="300" height="200"></canvas>
+    <canvas id="salaryProcessedChart" width="300" height="200"></canvas>
+  </div>
+
+  <div id="pieChartContainer" style="margin-left: 100px;">
+    <canvas id="ticketAmountChartPie" width="200" height="200"></canvas>
+    <canvas id="salaryProcessedChartPie" width="200" height="200"></canvas>
+  </div>
+</div>
+</body>
+
+</html>

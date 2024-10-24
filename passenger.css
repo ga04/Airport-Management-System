@@ -1,0 +1,75 @@
+  body {
+    background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Light-blue-wallpaper-hd-quality.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .input-container
+  {
+    text-align: center;
+    margin-top: 2%;
+    font-size: larger;
+    font-style: bold;
+  }
+  
+  .labels {
+    display: flex;
+  }
+  .labels h4 {
+    margin-top: 80px;
+    margin-right: 8px; /* Add some space between labels */
+    margin-left: 40px;
+  }
+  
+  .submit
+  {
+    margin-left: 100px;
+  }
+  .boxes
+  {
+    margin-top: 20px;
+  }
+  .pass-details
+  {
+    margin-left: 30px;
+  }
+  .add-pass
+  {
+    margin-left: 80%;
+  }
+  .heading
+  {
+    margin-top:10px;
+  }
+  .add{
+    margin-left: 60%;
+    color: red;
+  }
+  /* Example styling for the table */
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f7fafd;
+  }
+  
+  .input
+  {
+    text-align: center;
+    margin-top: 2%;
+    font-size: larger;
+    font-style: bold;
+  }
+  .detail
+  {
+    margin-left: 100px;
+  }

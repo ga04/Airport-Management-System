@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport</title>
+    <link rel="stylesheet" href="MainPage1.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="MainPage2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="Section_top">
+        <header class="header">
+            <nav class="navbar">
+                <a href="#" style="color: white;">Airसेवा-Airport Management System</a>
+            </nav>
+        </header>
+
+        <div class="main">
+            <div class="container">
+                <div id="square">
+                    <div class="front">
+                        <h1>Login</h1>
+                        <form action="#" method="post">
+                            <input
+                                required
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                            />
+                            <input
+                                required
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                            />
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <div class="right">
+                        <h1>Create a new account</h1>
+                        <form id="registrationForm" action="/add-login" method="post">
+                            <input
+                                required
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                            />
+                            <input
+                                required
+                                type="text"
+                                name="username"
+                                id="username"
+                                placeholder="User name"
+                            />
+                            <input
+                                required
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                            />
+                            <button type="submit" id="addLoginButton">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button id="frontSide" type="button">Login</button>
+                    <button id="rightSide" type="button">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const square = document.getElementById("square");
+        const frontSide = document.getElementById("frontSide");
+        const rightSide = document.getElementById("rightSide");
+
+        frontSide.addEventListener("click", () => {
+            frontSide.style.display = "none";
+            rightSide.style.display = "block";
+            square.style.transform = "rotate3d(0, 0, 0, 90deg)";
+            document.title = "Login page";
+        });
+
+        rightSide.addEventListener("click", () => {
+            rightSide.style.display = "none";
+            frontSide.style.display = "block";
+            square.style.transform = "rotate3d(0, -1, 0, 90deg)";
+            document.title = "Sign up page";
+        });
+
+        document.getElementById("addLoginButton").addEventListener("click", function () {
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Create an object with the login data
+            const data = {
+                email: email,
+                username: username,
+                password: password,
+            };
+
+            // Send a POST request to the server
+            fetch('/add-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect to user page after successful signup
+                        window.location.href = 'user.html';
+                    } else {
+                       alert("New login added successfully")
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('New User added')
+                });
+        });
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            console.log('Sending email:', email);
+            console.log('Sending password:', password);
+
+            // Create a data object to send to the server
+            const data = {
+                email: email,
+                password: password
+            };
+
+            // Send a POST request to the server with login credentials
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Received response:', data);
+                    if (data === 'admin') {
+                        window.location.href = 'mainPage.html';
+                    } else if (data === 'user') {
+                        window.location.href = 'userPage.html';
+                    } else {
+                        alert('Invalid email or password');
+                    }
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        // Add event listener to the form submission
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+            login(); // Call the login function
+        });
+    </script>
+</body>
+</html>

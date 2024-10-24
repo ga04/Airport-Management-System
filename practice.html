@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Maintenance</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Airport Maintenance</h1>
+    </header>
+
+    <div class="container">
+        <section class="maintenance-section">
+            <h2>Flight Maintenance</h2>
+            <form action="#" method="post">
+                <label for="flightNumber">Flight Number:</label>
+                <input type="text" id="flightNumber" name="flightNumber" required>
+
+                <label for="maintenanceType">Maintenance Type:</label>
+                <select id="maintenanceType" name="maintenanceType" required>
+                    <option value="routine">Routine Maintenance</option>
+                    <option value="emergency">Emergency Maintenance</option>
+                </select>
+
+                <label for="maintenanceDescription">Maintenance Description:</label>
+                <textarea id="maintenanceDescription" name="maintenanceDescription" rows="4" required></textarea>
+
+                <label for="maintenanceCost">Maintenance Cost:</label>
+                <input type="number" id="maintenanceCost" name="maintenanceCost" required>
+
+                <button type="submit">Submit Maintenance Request</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="container">
+      <section class="maintenance-section">
+          <h2>Ground Work</h2>
+          <form action="#" method="post">
+              <h3>Maintenance of Equipment and Vehicles</h3>
+
+              <label for="equipmentType">Equipment Type:</label>
+              <input type="text" id="equipmentType" name="equipmentType" required>
+
+              <label for="vehicleType">Vehicle Type:</label>
+              <input type="text" id="vehicleType" name="vehicleType" required>
+
+              <label for="equipmentMaintenanceDescription">Maintenance Description:</label>
+              <textarea id="equipmentMaintenanceDescription" name="equipmentMaintenanceDescription" rows="4" required></textarea>
+
+              <label for="equipmentMaintenanceCost">Maintenance Cost:</label>
+              <input type="number" id="equipmentMaintenanceCost" name="equipmentMaintenanceCost" required>
+
+              <button type="submit">Submit Maintenance Request</button>
+          </form>
+      </section>
+  </div>
+
+  
+    <div class="container">
+        <section class="maintenance-section">
+            <h2>Building Maintenance</h2>
+            <form action="#" method="post">
+                <label for="buildingName">Building Name:</label>
+                <input type="text" id="buildingName" name="buildingName" required>
+
+                <label for="electricityMaintenance">Electricity Maintenance:</label>
+                <select id="electricityMaintenance" name="electricityMaintenance" required>
+                    <option value="scheduled">Scheduled Maintenance</option>
+                    <option value="emergency">Emergency Repair</option>
+                </select>
+
+                <label for="cleaning">Cleaning:</label>
+                <select id="cleaning" name="cleaning" required>
+                    <option value="daily">Daily Cleaning</option>
+                    <option value="weekly">Weekly Cleaning</option>
+                    <option value="monthly">Monthly Cleaning</option>
+                </select>
+
+                <label for="buildingWorkDescription">Work Description:</label>
+                <textarea id="buildingWorkDescription" name="buildingWorkDescription" rows="4" required></textarea>
+
+                <label for="buildingMaintenanceCost">Maintenance Cost:</label>
+                <input type="number" id="buildingMaintenanceCost" name="buildingMaintenanceCost" required>
+
+                <button type="submit">Submit Building Maintenance Request</button>
+            </form>
+        </section>
+    </div>
+
+   
+    <footer>
+        <p>&copy; 2024 Airport Maintenance</p>
+    </footer>
+</body>
+
+</html>

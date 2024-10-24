@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Details</title>
+    <link rel="stylesheet" href="airline_details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+
+    
+    <section class="sec">
+        <div class="container">
+            <h3 class="section-title">Indigo</h3> 
+            <div class="content">
+                <div class="image">
+                    <img src="indigo.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h4 class="info-title">Description</h4>
+                    <p>
+                        IndiGo Airlines, founded in 2006, is a leading low-cost carrier in India. Known for its efficiency and punctuality, the airline operates a modern fleet, prioritizing safety and on-time performance. IndiGo is recognized for its affordable domestic and international flights, offering a hassle-free travel experience. With a commitment to simplicity and innovation, it has become a preferred choice for millions of passengers in the Indian aviation sector. 
+                    </p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="container">
+            <h3 class="section-title">Air India</h3>
+            <div class="content">
+                <div class="info even">
+                    <h4 class="info-title">Description</h4>
+                    <p>Air India is the flag carrier airline of India, established in 1932 as Tata Airlines. It later became Air India in 1946 and was nationalized by the Indian government in 1953. The airline operates both domestic and international flights and has been a significant player in the Indian aviation industry for decades. Air India has faced financial challenges and undergone restructuring efforts over the years. It offers services to a wide range of destinations, connecting India with various parts of the world. The airline has played a crucial role in shaping India's civil aviation history and continues to be a key player in the country's air travel landscape.                    </p>
+                </div>
+                <div class="image">
+                    <img src="air_india.avif" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="container">
+            <h3 class="section-title">Cathay Pacific</h3> 
+            <div class="content">
+                <div class="image">
+                    <img src="cathay-pacific.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h4 class="info-title">Description</h4>
+                    <p>
+                        Cathay Pacific is a major international airline based in Hong Kong. Founded in 1946, the airline is known for its high-quality service and extensive global network. Cathay Pacific operates both passenger and cargo flights, connecting Hong Kong with numerous destinations worldwide. Renowned for its modern fleet and commitment to customer satisfaction, the airline has earned a reputation as one of Asia's premier carriers. </p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="container">
+            <h3 class="section-title">Qatar Airways</h3> 
+            <div class="content">
+                <div class="info even">
+                    <h4 class="info-title">Description</h4>
+                    <p>
+                        Qatar Airways is the national carrier of the State of Qatar, established in 1993. Renowned for its luxurious service and modern fleet, the airline has rapidly grown to become one of the world's leading international carriers. Qatar Airways operates flights to various destinations across the globe, offering a high standard of comfort and service to passengers. The airline has received numerous awards for its excellence in the aviation industry, and its hub, Hamad International Airport in Doha, serves as a major transit point connecting passengers between continents.</p>
+                </div>
+                <div class="image">
+                    <img src="qatar-airways.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="container">
+            <h3 class="section-title">Emirates</h3> 
+            <div class="content">
+                <div class="image">
+                    <img src="emirates.png" alt="">
+                </div>
+                <div class="info">
+                    <h4 class="info-title">Description</h4>
+                    <p>Emirates is a prominent airline based in Dubai, United Arab Emirates, founded in 1985. Renowned for its opulent service and modern fleet, Emirates has become a global leader in the aviation industry. The airline operates an extensive network of flights to numerous international destinations, connecting travelers across the world through its hub, Dubai International Airport. Emirates is known for its commitment to luxury and comfort, offering state-of-the-art amenities and services to passengers. With a strong reputation for innovation and quality, Emirates has established itself as one of the premier airlines in the Middle East and beyond. </p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec sec-end">
+        <div class="container">
+            <h3 class="section-title">British Airways</h3> 
+            <div class="content">
+                <div class="info even">
+                    <h4 class="info-title">Description</h4>
+                    <p>British Airways is the flag carrier airline of the United Kingdom, founded in 1974. It is one of the largest and most well-known airlines globally. Operating an extensive network of flights, British Airways connects passengers to destinations around the world. With a focus on quality service and a modern fleet, the airline has played a significant role in the aviation industry. British Airways is based at London Heathrow Airport and is recognized for its commitment to customer satisfaction, offering a range of travel classes to cater to various preferences and needs.</p>
+                </div>
+                <div class="image">
+                    <img src="british-airways.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        //common reveal options to create reveal animations
+        ScrollReveal({
+            //reset: true, 
+            distance: '60px', 
+            duration: 2500, 
+            delay: 400
+        });
+        //target elements, and specify options to create reveal animations
+        ScrollReveal().reveal('.main-title, .section-title', { delay: 500, origin: 'left' }); 
+        ScrollReveal().reveal('.info', { delay: 600, origin: 'bottom' });
+        ScrollReveal().reveal('.text-box', { delay: 700, origin: 'right' });
+        ScrollReveal().reveal('.sec .image', { delay: 500, origin: 'top' }); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>New Flight</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="myjs.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="flight.css">
+</head>
+
+<body data-spy="scroll" data-target="#myscroll">
+    <div class="background-container"></div>
+   
+    <div class="container" style=" margin-top: 1.7rem; margin-left: 45px; width: 60%; padding: 0 5rem 0 5rem">
+        <!--<h1 style="color: white;">New Flight</h1>-->
+        <img src="Flight.jpg" style="border-radius: 20px;">
+        <hr>
+        <div style="width: 100%;" class="change-background">
+            <div class="panel-body" style="background-color: rgba(255, 255, 255, 0.3);">
+                <div class="input-group">
+                    <h3 for="class" style="color: black;">Airline No:</h3>
+                    <select class="form-control" id="airlineId" style="width: 150%;">
+                        <option></option>
+                        <option>AI112</option>
+                        <option>BA112</option>
+                        <option>E112</option>
+                        <option>CF112</option>
+                        <option>I112</option>
+                        <option>QA112</option>
+                    </select>
+                </div>
+                <br>
+
+                <form class="form-inline">
+                    <div class="input-group">
+                        <h3 for="" style="color: black;">Flight No:</h3>
+                        <input type="text" id="flightId" class="form-control" placeholder="Flight No." name="" required>
+                    </div>
+
+                    <br><br>
+                    <div>
+                        <div class="input-group">
+                            <h3 for="from" style="color: black;">From</h3>
+                            <input type="text" class="form-control" placeholder="Origin" name="" id="departureCity"
+                                required>
+                        </div>
+                        <div class="input-group">
+                            <h3 for="to" style="color: black;">To</h3>
+                            <input type="text" class="form-control" placeholder="Destination" name=""
+                                id="destinationCity" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div>
+                        <div class="input-group">
+                            <h3 for="Departure" style="color: black;">Departure Date</h3>
+                            <input type="date" class="form-control" name="date1" min="2017-01-01" id="departureDate"
+                                required>
+                        </div>
+                        <div class="input-group">
+                            <h3 style="color: black;">Departure Time</h3>
+                            <input type="time" class="form-control" name="" id="departureTime">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div>
+                        <div class="input-group">
+                            <h3 for="Adults" style="color: black;">Cost</h3>
+                            <input type="number" class="form-control" id="journeyHours"
+                                required>
+                        </div>
+                        <div class="input-group" style="margin-top: 58px; margin-left: 30px;">
+                            <button type="submit" class="btn " id="addFlightButton"><i
+                                class="fa fa-plus" style="height: 20px; width: 50px; color: rgb(8, 8, 8);"></i> </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="flight.js"></script>
+</body>
+
+</html>
